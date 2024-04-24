@@ -1,0 +1,1 @@
+docker run --name garnet --network=host --ulimit memlock=-1 ghcr.io/microsoft/garnet --auth Password --password {{Simp1fy}}

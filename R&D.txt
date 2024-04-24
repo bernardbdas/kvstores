@@ -1,0 +1,36 @@
+On March 21st, 2024, Redis announced that it would release the "in-memory data store" under non-free, source available licenses, starting from redis 7.4
+
+Open-source Alternatives:
+1. KeyDB
+2. Valkey project
+3. 
+
+
+Advantages of using Redis between Server and Client(SQA Agent):
+
+1. Faster Read Operations
+2. Reduced Database Load
+3. Complex Query Simplification
+4. Improved Scalability
+5. Temporary Data Storage
+
+Upcoming Challenges:
+
+1. Adds complexity to the architecture
+2. Manage the synchronization of data between Redis and MongoDB
+3. Determine the volatility and persistence of the data.
+4. Handle cache invalidation
+5. Ensuring data consistency between the two data stores
+6. Plan for high availability and fault tolerance
+7. Implement proper security measures to protect your Redis instance
+8. Evaluate whether the benefits of caching outweigh the additional network latency.
+9. Set up monitoring and alerting mechanisms to monitor the health and performance of your Redis instance.
+
+
+Before making a decision, Factors to consider
+
+1. Requirements of your application
+2. The complexity of your MongoDB queries
+3. The expected read/write patterns, and the scalability requirements
+
+Conducting performance tests and analyzing the trade-offs can help you make an informed decision.

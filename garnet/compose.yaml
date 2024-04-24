@@ -1,0 +1,22 @@
+services:
+  garnet:
+    image: ghcr.io/microsoft/garnet:latest
+    container_name: garnet
+    ulimits:
+      memlock: -1
+    ports:
+      - 8990:6379
+
+  keydb:
+    image: eqalpha/keydb:latest
+    container_name: keydb
+    ports:
+      - 8991:6379
+    volumes:
+
+volumes:
+  db-data:
+
+secrets:
+  db-password:
+    file: db/password.txt
