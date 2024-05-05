@@ -1,15 +1,42 @@
 services:
   keydb-server:
-    image: eqalpha/keydb:latest
+    image: eqalpha/keydb
     container_name: keydb-container
+    networks:
+      net0:
+        aliases:
+          - "valkey.service"
+    user: root
     ports:
       - 8991:6379
     volumes:
-      - ./keydb.conf:/etc/keydb/keydb.conf
+      - ./.docker/keydb:/etc/keydb
+      - ./.docker/data:/data
+
+  mongodb-server:
+    image: mongo:latest
+    container_name: "mongodb-container"
+    networks:
+      net0:
+        aliases:
+          - "mongodb.service"
+    user: root
+    ports:
+      - 8989:27017
+    volumes:
+      - ./.docker/mongodata:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: s1mpliky
 
 volumes:
-  db-data:
+  .docker:
+    external: true
 
-secrets:
-  db-credentials:
-    file: secrets.txt
+# secrets:
+#   user-acl:
+#     file: ./server/keydb/users.acl
+
+networks:
+  net0:
+    driver: bridge
