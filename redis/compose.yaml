@@ -1,28 +1,28 @@
 services:
-  keydb-server:
-    image: eqalpha/keydb:latest
-    container_name: keydb-container
+  redis-server:
+    image: redis:latest
+    container_name: redis-container
     networks:
       net0:
         aliases:
-          - "keydb.service"
+          - "redis.service"
     user: root
     ports:
-      - 8990:6379
+      - 8997:6379
     volumes:
-      - ./.docker/keydb:/etc/keydb
+      - ./.docker/redis:/usr/local/etc/redis
       - ./.docker/data:/data
 
   mongodb-server:
     image: mongo:latest
-    container_name: "mongodb-for-keydb"
+    container_name: "mongodb-for-redis"
     networks:
       net0:
         aliases:
           - "mongodb.service"
     user: root
     ports:
-      - 8991:27017
+      - 8998:27017
     volumes:
       - ./.docker/mongodata:/data/db
     environment:
