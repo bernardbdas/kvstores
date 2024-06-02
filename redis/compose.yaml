@@ -1,6 +1,13 @@
 services:
   redis-server:
     image: redis/redis-stack:latest
+    # image: redis-server-image
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    #   args:
+    #     CONF_PATH: .docker/redis/redis.conf
+    #     ACL_PATH: .docker/redis/users.acl
     container_name: redis-container
     networks:
       net0:
@@ -16,6 +23,8 @@ services:
     env_file:
       - path: .env
         required: true
+    # command: >
+    #   redis-server --requirepass s1mpliky
 
   # mongodb-server:
   #   image: mongo:latest
